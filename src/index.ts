@@ -1,5 +1,6 @@
 
 import { test } from './js/test'
+import "./style/input.css";
 
 function Component(){
     const element = document.createElement('div');
