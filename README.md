@@ -1,3 +1,60 @@
+# Set up Styles and CSS Loader | style-loader | css-loader
+
+- 1.) Install style and css loaders
+
+  npm install --save-dev style-loader css-loader
+
+- 2.) In webpack.config.js, add loader configuation in the rules array
+
+      //inside webpack.config.js
+
+      module.exports={
+          mode: 'development',
+          entry: './src/index.ts',
+          output:{
+              path: path.resolve(__dirname, 'dist' ),
+              filename: 'main.bundle.js',
+          },
+          module:{
+              rules:[
+                  {test: /\.txt?/ , use: 'raw-loader'},
+
+                  {
+                      test: /\.tsx?$/,
+                      use: 'ts-loader',
+                      exclude: /node_modules/,
+                  },
+
+                  {
+                      test: /\.css$/i,
+                      use: ["style-loader", "css-loader"],
+                  },
+              ]
+          },
+          resolve: {
+              extensions: ['.tsx', '.ts', '.js'],
+          },
+      }
+
+- 3.)import the css file into the main index.ts file so that webpack is aware it needs to handle css files.
+
+//inside ./src/index.ts
+
+    import { test } from './js/test'
+    import "./style/input.css";
+
+    function Component(){
+            const element = document.createElement('div');
+            element.innerHTML = ['Hello', 'webpack', test, 'hello again!!!!'].join(' ');
+        return element;
+    }
+
+    document.body.appendChild(Component());
+
+- 4.) Rebuild webpack
+
+  npm run webpack
+
 # Set Up TypeScriptLoader | ts-loader
 
 First make sure that typescript is set up and installed: [see the README.md](https://github.com/wasabi805/typeScript-playground)
