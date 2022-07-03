@@ -3,12 +3,11 @@
 First make sure that typescript is set up and installed: [see the README.md](https://github.com/wasabi805/typeScript-playground)
 
 After setting up Typescript,
-if you were to compile typescript (ie npm run typescript) and after run weback (ie, npm run webpack)
+if you were to compile typescript (ie, npm run typescript) and also after building weback (ie, npm run webpack)
 you might see this error:
 
-you'll see that if you convert any other other file than index.ts, from `someFile.js` to `someFile.ts`,
-you'll get an error like:
-![set up](./src/images/webpack-error-1.png?raw=true "Optional Title")
+- you'll see that if you convert any other other file than index.ts, from `someFile.js` to `someFile.ts`, you'll get an error like:
+  ![set up](./src/images/webpack-error-1.png?raw=true "Optional Title")
 
 This is because we will need to configure a loader in webpack to understand how to compile js, ts, and tsx file extentions so that webpack can compress and bundle all our js,ts, and tsx files that will get injected into our main index.html. Similarly, other files and resorces such as style tags, css files, sass files, image files, etc., will need an appropriate loader configuration within webpack.
 
