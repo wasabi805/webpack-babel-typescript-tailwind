@@ -1,8 +1,9 @@
-import { user } from "./js/test";
+
+import { test } from './js/test'
 
 function Component(){
     const element = document.createElement('div');
-    element.innerHTML = _.join(['Hello', 'webpack', user.name], ' ');
+    element.innerHTML = ['Hello', 'webpack', test, 'hello again!!!!'].join(' ');
     return element;
 }
 

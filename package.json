@@ -4,11 +4,14 @@
   "description": "",
   "private": true,
   "scripts": {
-    "webpack": "npx webpack "
+    "webpack": "npx webpack ",
+    "typescript": "tsc",
+    "generate-tsconfig": "tsc --init"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "typescript": "^4.7.4",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
   },
