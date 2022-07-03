@@ -1,22 +1,25 @@
-# Walk through with Webpack Docs
+# Set Up TypeScriptLoader | ts-loader
 
 First make sure that typescript is set up and installed: [see the README.md](https://github.com/wasabi805/typeScript-playground)
 
 After setting up Typescript,
-if you were to compile typescript (ie npm run typescript) and after run weback (ie, npm run webpack)
+if you were to compile typescript (ie, npm run typescript) and also after building weback (ie, npm run webpack)
 you might see this error:
 
-you'll see that if you convert any other other file than index.ts, from `someFile.js` to `someFile.ts`,
-you'll get an error like:
-![set up](./src/images/webpack-error-1.png?raw=true "Optional Title")
+- you'll see that if you convert any other other file than index.ts, from `someFile.js` to `someFile.ts`, you'll get an error like:
+  ![set up](./src/images/webpack-error-1.png?raw=true "Optional Title")
 
-The following directions are to address this issue. These steps were take out of the webpack documentaion for [adding TypeScript Loaders](https://webpack.js.org/guides/typescript/)
+This is because we will need to configure a loader in webpack to understand how to compile js, ts, and tsx file extentions so that webpack can compress and bundle all our js,ts, and tsx files that will get injected into our main index.html. Similarly, other files and resorces such as style tags, css files, sass files, image files, etc., will need an appropriate loader configuration within webpack.
 
-- 1.) Install TypeScript Loaders
+Continuing below are the steps needed to configure webpack to use ts-loader. These steps provided reference webpack's documentaion for [adding TypeScript Loaders](https://webpack.js.org/guides/typescript/) but the same thought process applies to other resources used in our html.
+
+# Install ts-loader
+
+- 1.) Install TypeScript Loaders.
 
   npm install --save-dev typescript ts-loader
 
-- 2.) Configure tsconfig.json
+- 2.) Configure tsconfig.json.
 
       {
         "compilerOptions": {
@@ -29,7 +32,7 @@ The following directions are to address this issue. These steps were take out of
         }
         }
 
-- 3.) Add ts-loader to the rules array within webpack.config.js and update extensions array
+- 3.) Add ts-loader to the rules array within webpack.config.js and update extensions array for tsx, ts, and js extentions.
   //Inside webpack.config.js
 
       module.exports={
@@ -55,7 +58,7 @@ The following directions are to address this issue. These steps were take out of
         },
       }
 
-- 4. Compile TypeScript and build webpack
+- 4. Compile TypeScript and build webpack by running the scripts in package.json.
 
 ## Setting Up Webpack, To Get Started ...
 
