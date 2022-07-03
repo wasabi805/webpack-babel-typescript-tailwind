@@ -10,9 +10,52 @@ you'll see that if you convert any other other file than index.ts, from `someFil
 you'll get an error like:
 ![set up](./src/images/webpack-error-1.png?raw=true "Optional Title")
 
-The following directions are to address this issue:
+The following directions are to address this issue. These steps were take out of the webpack documentaion for [adding TypeScript Loaders](https://webpack.js.org/guides/typescript/)
 
-1.)...TBD
+- 1.) Install TypeScript Loaders
+
+  npm install --save-dev typescript ts-loader
+
+- 2.) Configure tsconfig.json
+
+      {
+        "compilerOptions": {
+        "outDir": "dist",
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react", //only include this for react project
+        "allowJs": true,
+        "moduleResolution": "node"
+        }
+        }
+
+- 3.) Add ts-loader to the rules array within webpack.config.js and update extensions array
+  //Inside webpack.config.js
+
+      module.exports={
+      mode: 'development',
+      entry: './src/index.ts',
+      output:{
+          path: path.resolve(__dirname, 'dist' ),
+          filename: 'main.bundle.js',
+      },
+      module:{
+          rules:[
+              {test: /\.txt?/ , use: 'raw-loader'},
+
+              {
+                  test: /\.tsx?$/,
+                  use: 'ts-loader',
+                  exclude: /node_modules/,
+                },
+          ]
+      },
+      resolve: {
+          extensions: ['.tsx', '.ts', '.js'],
+        },
+      }
+
+- 4. Compile TypeScript and build webpack
 
 ## Setting Up Webpack, To Get Started ...
 
