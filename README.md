@@ -8,7 +8,7 @@ you might see this error:
 
 you'll see that if you convert any other other file than index.ts, from `someFile.js` to `someFile.ts`,
 you'll get an error like:
-![set up](./images/webpack-error-1.png?raw=true "Optional Title")
+![set up](./src/images/webpack-error-1.png?raw=true "Optional Title")
 
 The following directions are to address this issue:
 
