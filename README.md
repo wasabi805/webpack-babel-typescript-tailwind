@@ -3,15 +3,9 @@
 see: https://www.robinwieruch.de/webpack-font/
 for later Babel vs Webpack : https://dev.to/getd/wtf-are-babel-and-webpack-explained-in-2-mins-43be
 
-webpack docs for file-loader: https://v4.webpack.js.org/loaders/file-loader/
-
-outputpath : https://v4.webpack.js.org/loaders/file-loader/#outputpath
-
-listOfLoaders: https://webpack.js.org/loaders/
-
 ## Set up file-loader and url-loader
 
-Add file-loader and url-loader:
+Add file-loader and url-loader: [For more info on file-loader ](https://v4.webpack.js.org/loaders/file-loader/)
 
     npm install --save-dev style-loader file-loader url-loader
 
@@ -27,7 +21,7 @@ Next, you need to add a rule for images in the the rules array by adding an obje
 - have a test key with a value of a file extentions associated with images.
 - have a use key with a value of an array of objects
 
-Each object will have a key of loader with the value equal to the name of the loader. Specfically for file-loader, we'll need to assign an output path so that it is included in the bundling process for webpack to distrubute the image to our index.html located in the dist folder.
+Each object will have a key of loader with the value equal to the name of the loader. Specfically for file-loader, we'll need to assign an output path so that it is included in the bundling process for webpack to distrubute the image to our index.html located in the dist folder. For more about outputPath, see the [doc](https://v4.webpack.js.org/loaders/file-loader/#outputpath)
 
 Below are the changes mentioned above.
 
@@ -60,7 +54,7 @@ Below are the changes mentioned above.
     },
     }
 
-Now that the file-loader configuation is set, We can generate image file in the dist folder by rebuilding webpack by running this in the terminal:
+Now that the file-loader configuation is set, we can generate the image file in the dist folder by rebuilding webpack. Run this in the terminal to rebuild webpack:
 
     npm run webpack
 
@@ -70,7 +64,7 @@ This should generate a new images directory inside the dist folder containing th
 You may notice that although the dist/src/images succesfully auto generated, you see the following error below:
 ![set up](./src/images/error-file-loader-ts-for-images.png?raw=true "Optional Title")
 
-This relates to the image type hasn't been declared as mentioned earlier. To declare a type we'll need to create a global.d.ts file in the root directory and declare a type inside that file. For more info on modules and the role of d.ts file check the [TypeScript doc](https://www.typescriptlang.org/docs/handbook/modules.html#ambient-modules)
+This relates to the image type hasn't been declared as mentioned earlier. To declare a type we'll need to create a global.d.ts file in the root directory and declare a type inside that file. For more info on modules and the role of d.ts file check the [TypeScript docs](https://www.typescriptlang.org/docs/handbook/modules.html#ambient-modules)
 
 Inside the global.d.ts file declare the type for png extensions : [solution found here](https://stackoverflow.com/a/46629045/7857134)
 
@@ -86,9 +80,11 @@ Finally rebuild webpack:
 
     npm run webpack
 
-You should be to use the imported file now in src/index.ts
+<!-- ![set up](./src/images/file-loader-build-image-dir.png?raw=true "Optional Title") -->
 
-![set up](./src/images/file-loader-build-image-dir.png?raw=true "Optional Title")
+Setting up exports and imports of files is now complete. You should no longer see the red squiggles now that the type for png is declared. Repeat this process for jpg,jpeg, tiff, etc. if you plan on using other image file types.
+
+![set up](./src/images/file-loader-import-error-resolved.png?raw=true "Optional Title")
 
 # Set up Styles and CSS Loader | style-loader | css-loader
 
