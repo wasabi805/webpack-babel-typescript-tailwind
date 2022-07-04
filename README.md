@@ -116,7 +116,7 @@ Next, we'll need to download a custom font and add it in our project. In the src
 
 In order to use that font, use the CSS at rule inside the global css file. The global css file for this project is located in src/style/input.css Make sure to make a relative path reference to the font and include the font format.
 
-![set up](./src/images/url-loader-font-face.png?raw=true "Optional Title")
+![set up](./src/images/url-loader-font-face?raw=true "Optional Title")
 
 Then in the class where the font is used, include css attr of 'font-family' and make its value the font name;
 
