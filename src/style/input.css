@@ -3,13 +3,37 @@ body {
   color: white;
 }
 
+@font-face {
+  font-family: "killer-boots";
+  src: url(.././fonts/killer-boots.ttf) format("truetype");
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  font-family: killer-boots;
+  font-size: 10rem;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: cyan;
+}
+
 .logo {
+  display: inline-flex;
   position: relative;
   width: 30vw;
-  background: cyan;
   width: 500px;
   height: 500px;
-  /* background-image: url("https://raw.githubusercontent.com/webpack/media/master/logo/icon.png"); */
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
 }

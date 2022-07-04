@@ -13,6 +13,11 @@ module.exports={
             {test: /\.txt?/ , use: 'raw-loader'},
 
             {
+              test: /\.(woff|woff2)$/i,
+              loader: 'url-loader'
+            },
+
+            {
               test: /\.(png|jpe?g|gif)$/i,
               use:[{
                 loader: 'file-loader',

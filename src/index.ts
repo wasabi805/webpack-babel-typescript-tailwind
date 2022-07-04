@@ -1,26 +1,30 @@
-import { user, someFunction } from './js/constants'
+import { pack, someFunction } from './js/constants'
 import "./style/input.css";
 import img from './images/webpack-icon.png'
 
 function Component(){
     const docFragment = document.createDocumentFragment();
 
-    const element = document.createElement('div');
+    const wrapper = document.createElement('div');
+    const header = document.createElement('h1')
+    const headerText = document.createTextNode(['Web', pack].join(''))
     const logo = document.createElement('div')
     const image = document.createElement('img')
     
+    wrapper.className='wrapper'
+    header.className='header'
+    header.appendChild(headerText)
     logo.className = 'logo'
     image.src = img
-    image.style.cssText = 'width: 100%; height:100%;'
     logo.appendChild(image)
+    console.log('hi')
 
+    docFragment.appendChild(wrapper)
 
-    docFragment.appendChild(element)
+    wrapper.append(header)
+    wrapper.appendChild(logo)
 
-    element.append(['Hello', user].join(' '))
-    element.appendChild(logo)
-
-    return element;
+    return wrapper;
 }
 
 document.body.append(Component());
