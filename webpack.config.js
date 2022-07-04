@@ -13,16 +13,20 @@ module.exports={
             {test: /\.txt?/ , use: 'raw-loader'},
 
             {
+              test: /\.(png|jpe?g|gif)$/i,
+              use:[{
+                loader: 'file-loader',
+                options: {
+                  outputPath: 'src/images',
+                },
+              }]
+            },
+            
+            {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
               },
-
-            //   {
-            //     test: /\.css$/i,
-            //     use: ["style-loader", "css-loader"],
-            //   },
-
               {
                 test: /\.css$/i,
                 use:[{loader: 'style-loader'} ,{

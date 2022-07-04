@@ -9,7 +9,7 @@ body {
   background: cyan;
   width: 500px;
   height: 500px;
-  background-image: url("https://raw.githubusercontent.com/webpack/media/master/logo/icon.png");
+  /* background-image: url("https://raw.githubusercontent.com/webpack/media/master/logo/icon.png"); */
   background-size: contain;
   background-repeat: no-repeat;
 }
