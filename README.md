@@ -112,7 +112,7 @@ Once installed, configure the rules for this loader in webpack:
 
 Next, we'll need to download a custom font and add it in our project. In the src directory, I simply made a fonts folder where I place the custom font.
 
-![set up](./src/images/file-loader-import-error-resolved.png?raw=true "Optional Title")
+![set up](./src/images/ur-loader-fonts-dir.png?raw=true "Optional Title")
 
 In order to use that font, use the CSS at rule inside the global css file. The global css file for this project is located in src/style/input.css Make sure to make a relative path reference to the font and include the font format.
 
