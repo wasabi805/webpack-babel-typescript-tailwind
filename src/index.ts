@@ -1,4 +1,3 @@
-
 import { test } from './js/test'
 import "./style/input.css";
 
