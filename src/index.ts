@@ -1,19 +1,24 @@
-import { test } from './js/test'
+import { user, someFunction } from './js/constants'
 import "./style/input.css";
 import img from './images/webpack-icon.png'
 
 function Component(){
-    const element = document.createElement('div');
-
     const docFragment = document.createDocumentFragment();
+
+    const element = document.createElement('div');
+    const logo = document.createElement('div')
+    const image = document.createElement('img')
+    
+    logo.className = 'logo'
+    image.src = img
+    image.style.cssText = 'width: 100%; height:100%;'
+    logo.appendChild(image)
+
+
     docFragment.appendChild(element)
 
-    const image = document.createElement('img')
-    image.id = 'webpack-logo'
-    image.src = img
-    
-    element.append(['Hello', 'webpack', test, 'hello again!!!!'].join(' '))
-    element.appendChild(image)
+    element.append(['Hello', user].join(' '))
+    element.appendChild(logo)
 
     return element;
 }
