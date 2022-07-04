@@ -113,11 +113,11 @@ Above you can see that the use array is now an array of objects. Both those obje
 
 **The next important action** is to import the input.css (which is the global css stylesheet) into src/index.ts so that it will be included when webpack complies and bundles index.ts to include it in the dist folder.
 
-    ![set up](./src/images/importCss-indexTs?raw=true "Optional Title")
+![set up](./src/images/importCss-indexTs.png?raw=true "Optional Title")
 
 I'll then go ahead and add the class name "logo" to the div I want the background image to appear in:
 
-    ![set up](./src/images/divUsingCssUrl?raw=true "Optional Title")
+![set up](./src/images/divUsingCssUrl.png?raw=true "Optional Title")
 
 and finally run:
 
