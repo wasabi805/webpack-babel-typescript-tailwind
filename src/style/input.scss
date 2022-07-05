@@ -1,3 +1,5 @@
+@use "different-sass-file";
+
 body {
   background: black;
   color: white;
@@ -8,11 +10,21 @@ body {
   src: url(.././fonts/killer-boots.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "Adistro";
+  src: url(.././fonts/Adistro.otf) format("opentype");
+}
+
 .wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .from-a-different-sass-file {
+    font-family: "Adistro";
+    font-size: 3rem;
+  }
 }
 
 .header {

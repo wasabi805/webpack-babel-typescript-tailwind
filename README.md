@@ -1,3 +1,155 @@
+# Handlde Sass files | sass-loader sass
+
+TODO: npm install sass-loader sass webpack --save-dev
+[see sass-loader docs](https://www.npmjs.com/package/sass-loader)
+
+TODO: configure webpack rules:
+
+    //inside webpack.config
+
+        module.exports = {
+          mode: "development",
+          entry: "./src/index.ts",
+          output: {
+            path: path.resolve(__dirname, "dist"),
+            filename: "main.bundle.js",
+          },
+          module: {
+            rules: [
+              { test: /\.txt?/, use: "raw-loader" },
+
+              {
+                test: /\.s[ac]ss$/i,
+                use: [{ loader: "style-loader" }, {loader: "css-loader" }, {loader: "sass-loader" }],
+              },
+            ]
+          }}
+
+Next, **rename you global stylesheet** ending in **css to scss**. For this example, my _input.css_ will get renamed to _input.scss_.
+
+Since this file is imported into src/index.ts, well need to also rename the file there to.
+
+    //inside src/index.ts
+    import { pack, someFunction } from "./js/constants";
+
+    import "./style/input.scss"; // CHANGE THE IMPORT HERE
+
+    import img from "./images/webpack-icon.png";
+
+    function Component() {
+      const docFragment = document.createDocumentFragment();
+      ...
+    }
+
+We can verify if sass-loader was added correctly as a loader in our webpack.config.js in the terminal by running:
+
+npm run webpack
+
+If the previous styling in the browser didn't change, then the configuation changes are correct. If not, check syntax, spelling, etc.
+
+Now, we'll want to confirm that we can use sass. The easiest way is to see if we can nest added styles in nested classes. Let's do that by adding another element to the DOM by creating it in src/index.ts Below are the changes made in index.ts that create our new h2 element:
+
+![set up](./src/images/sass-loader-create-new-el.png?raw=true "Optional Title")
+
+Above, we simply created a subtitle h2 element with some text in it then append it to the wrapper div.
+
+Next, open src/style/input.scss and the following sass selector for h2:
+
+    // inside src/stype/input.scss
+    body:{
+      background: black;
+      color: white;
+    }
+    ...
+
+    .wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      // Sass selector for h2
+      & h2 {
+        color: red;
+      }
+
+    }
+
+    ...
+
+This will simply select h2 children from the div with class .wrapper . Make sure to rebundle webpack in the terminal by running the script, _npm run webpack_. As you can see below, this will result in changing the color of the h2 to red.
+
+![set up](./src/images/sass-loader-nested-selector.png?raw=true "Optional Title")
+
+I'm going to remove the styling we just added since it shows that we can use sass selectors now.
+
+## Additional Verificiation for @use
+
+Another critical feature from sass is the ability to load rules, mixins, and variable from other Sass style sheets. Here's more info on [@use](https://sass-lang.com/documentation/at-rules/use) if you're interested. On a side note, @use is the current version of @import which will get phased out eventually in the next couple of years.
+
+Let's start by adding a className to the h2 subtitle element we recently created. Here, I've given the h2 element the className of _from-a-different-sass-file_ as shown below:
+![set up](./src/images/sass-loader-add-className.png?raw=true "Optional Title")
+
+Next, we need to create a new sass stylesheet in src/style. For this example, the new sass stylesheet is called _different-sass-file.scss_.
+
+Inside _different-sass-file.scss_, we'll just create a new class with the same name of the stylesheet and style the color like so:
+
+    //  inside src/style/different-sass-file.scss
+
+    .from-a-different-sass-file {
+      color: light grey;
+    }
+
+Afterwards, we'll need to import the styling class we created in src/style/from-a-different-sass-file.scss into src/style/input.scss. This is done using @use provided by sass inside src/style/index.ts. Make sure that use is listed at the top of the file. According to the [docs](https://sass-lang.com/documentation/at-rules/use):
+
+> A stylesheet’s @use rules must come before any rules other than @forward, including style rules. However, you can declare variables before @use rules to use when configuring modules.
+
+The @use should be implemented like so:
+
+// inside src/style/input.scss
+
+    @use "different-sass-file";
+
+    body {
+      background: black;
+      color: white;
+    }
+
+    ...
+
+To demonstrate that styles from seperate sass stylesheets are provided by @use, we'll give also nest the .from-a-different-sass-file class within the .wrapper class inside src/style/index.ts:
+
+    // inside src/style/input.scss
+    @use "different-sass-file";
+
+    body {
+      background: black;
+      color: white;
+    }
+    ...
+    @font-face {
+      font-family: "Adistro";
+      src: url(.././fonts/Adistro.otf) format("opentype");
+    }
+
+    .wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      // Here is the styling we will add
+
+      .from-a-different-sass-file {
+        font-family: "Adistro";
+        font-size: 3rem;
+      }
+    }
+    ...
+
+Finally, if we run _npm run webpack_ to recomplie, we see that both styles from src/style.iput.scss and from src/style/different-sass-file-scss are applied to the html mark up.
+![set up](./src/images/sass-loader-use.png?raw=true "Optional Title")
+
 # Import Images and Fonts | file-loader | url-loader
 
 This will cover....
