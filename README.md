@@ -1,11 +1,12 @@
 # Handle Sass files | sass-loader sass
 
-TODO: npm install sass-loader sass webpack --save-dev
-[see sass-loader docs](https://www.npmjs.com/package/sass-loader)
+We need to install sass and sass-loader. For more info on sass-loader, see the [docs](https://www.npmjs.com/package/sass-loader) In the terminal run:
 
-TODO: configure webpack rules:
+    npm install sass-loader sass --save-dev
 
-    //inside webpack.config
+Let's start by adding the adding sass-loader to our rules array in webpack.config.js .
+
+    //inside webpack.config.js
 
         module.exports = {
           mode: "development",
@@ -18,16 +19,21 @@ TODO: configure webpack rules:
             rules: [
               { test: /\.txt?/, use: "raw-loader" },
 
+          //  Adding sass-loader bellow:
+
               {
                 test: /\.s[ac]ss$/i,
                 use: [{ loader: "style-loader" }, {loader: "css-loader" }, {loader: "sass-loader" }],
               },
+
             ]
           }}
 
-Next, **rename you global stylesheet** ending in **css to scss**. For this example, my _input.css_ will get renamed to _input.scss_.
+Next, **rename your global stylesheet** ending in **.css to .scss**. For this example, my _src/style/input.css_ will get renamed to _isrc/style/input.css_.
 
-Since this file is imported into src/index.ts, well need to also rename the file there to.
+![set up](./src/images/sass-loader-rename-file.png?raw=true "Optional Title")
+
+Since this file is imported into src/index.ts for so that webpack can bundle it, we'll need to also rename the file src/index.ts as well :
 
     //inside src/index.ts
     import { pack, someFunction } from "./js/constants";
@@ -41,13 +47,19 @@ Since this file is imported into src/index.ts, well need to also rename the file
       ...
     }
 
-We can verify if sass-loader was added correctly as a loader in our webpack.config.js in the terminal by running:
+To Summarize, what we've done so far, we have:
+
+- added the loader setup to the rules array in webpack.config.js
+- renamed src/style/input.css to src/style/input.scss
+- renamed the import of input.scss into src/index.ts
+
+it'd would be a good idea to check that we've installed everything correctly. In the terminal run:
 
     npm run webpack
 
-If the previous styling in the browser didn't change, then the configuation changes are correct. If they did change or you get error, check syntax, spelling, etc.
+If the previous styling in the browser didn't change, it means that we've succesfully added sass-loader. If they did change or you get an error, check syntax, spelling, references to relative paths, etc.
 
-Now, we'll want to confirm that we can use sass. The easiest way is to see if we can nest added styles in nested classes. Let's do that by adding another element to the DOM by creating it in src/index.ts Below are the changes made in index.ts that create our new h2 element:
+Assuming there are no erros, we'll want to confirm that we can use sass. The easiest way is to see if we add styles to nested classes. Let's do that by adding another element to the DOM by creating it in src/index.ts Below are the changes made in src/index.ts that create our new h2 element:
 
 ![set up](./src/images/sass-loader-create-new-el.png?raw=true "Optional Title")
 
@@ -77,11 +89,15 @@ Next, open src/style/input.scss add the following sass selector for h2:
 
     ...
 
-This will simply select h2 children from the div with class .wrapper . Make sure to rebundle webpack in the terminal by running the script, _npm run webpack_. As you can see below, this will result in changing the color of the h2 to red.
+This will simply select our h2 child element from the div with class .wrapper . Make sure to rebundle webpack in the terminal by running:
+
+    npm run webpack
+
+As you can see below, this will result in changing the color of the h2 to red.
 
 ![set up](./src/images/sass-loader-nested-selector.png?raw=true "Optional Title")
 
-I'm going to remove the styling we just added since it shows that we can use sass selectors now.
+I'm going to remove the styling we just added since we've verified that sass selectors are woring.
 
 ## Additional Verificiation for @use
 
