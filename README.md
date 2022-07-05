@@ -1,4 +1,4 @@
-# Handlde Sass files | sass-loader sass
+# Handle Sass files | sass-loader sass
 
 TODO: npm install sass-loader sass webpack --save-dev
 [see sass-loader docs](https://www.npmjs.com/package/sass-loader)
