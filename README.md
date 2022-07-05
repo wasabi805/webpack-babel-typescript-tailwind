@@ -133,7 +133,7 @@ The @use should be implemented like so:
 
     ...
 
-To demonstrate that styles from seperate sass stylesheets are provided by @use, we'll also nest the .from-a-different-sass-file class within the .wrapper class inside src/style/index.ts:
+We're going to verify that @use is allowing us to apply styles from a different stylesheet. We'll do that by adding a nested class for .different-sass-file to the .wrapper class as shown below :
 
     // inside src/style/input.scss
     @use "different-sass-file";
@@ -156,14 +156,18 @@ To demonstrate that styles from seperate sass stylesheets are provided by @use, 
 
       // Here is the styling we will add
 
-      .from-a-different-sass-file {
+      .different-sass-file {
         font-family: "Adistro";
         font-size: 3rem;
       }
     }
     ...
 
-Finally, if we run _npm run webpack_ to recomplie, we see that both styles from src/style.iput.scss and from src/style/different-sass-file-scss are applied to the html mark up.
+Finally to apply our changes, recomplie by running in the terminal:
+
+    npm run webpack
+
+We see that both styles from src/style.iput.scss and from src/style/different-sass-file-scss are applied to the html mark up.
 ![set up](./src/images/sass-loader-use.png?raw=true "Optional Title")
 
 # Import Images and Fonts | file-loader | url-loader
