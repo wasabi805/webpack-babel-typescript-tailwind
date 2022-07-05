@@ -59,7 +59,11 @@ it'd would be a good idea to check that we've installed everything correctly. In
 
 If the previous styling in the browser didn't change, it means that we've succesfully added sass-loader. If they did change or you get an error, check syntax, spelling, references to relative paths, etc.
 
-Assuming there are no erros, we'll want to confirm that we can use sass. The easiest way is to see if we add styles to nested classes. Let's do that by adding another element to the DOM by creating it in src/index.ts Below are the changes made in src/index.ts that create our new h2 element:
+Assuming there are no erros, we'll want to confirm that we can _use_ sass. The easiest way to check is to see if any sass syntax registers with webpack is, to use a nested selector that will apply style changes for an element.
+
+Let's do that by adding another element to the DOM by creating it in src/index.ts . We'll use a nested selector from sass syntax on the element we're about to create.
+
+Below are the changes made in src/index.ts that create our new h2 element:
 
 ![set up](./src/images/sass-loader-create-new-el.png?raw=true "Optional Title")
 
@@ -89,7 +93,7 @@ Next, open src/style/input.scss add the following sass selector for h2:
 
     ...
 
-This will simply select our h2 child element from the div with class .wrapper . Make sure to rebundle webpack in the terminal by running:
+This will simply select our h2 child element from the div with the class of .wrapper . Make sure to rebundle webpack in the terminal by running:
 
     npm run webpack
 
