@@ -1,5 +1,6 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const _ = require("lodash");
 
 module.exports = {
@@ -15,7 +16,11 @@ module.exports = {
 
       {
         test: /\.s[ac]ss$/i,
-        use: [{ loader: "style-loader" }, {loader: "css-loader" }, {loader: "sass-loader" }],
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "sass-loader" },
+        ],
       },
 
       {
@@ -54,9 +59,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin(                            
-    {template: 'src/html/index.html'}                         
-  )],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "src/html/index.html" }),
+    new CleanWebpackPlugin(),
+  ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },

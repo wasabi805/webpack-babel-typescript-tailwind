@@ -11,10 +11,10 @@ function Component() {
   const logo = document.createElement("div");
   const image = document.createElement("img");
 
-  const subTitle = document.createElement('h2')
-  const subtitleText = document.createTextNode('A MUST HAVE TOOL')
-  subTitle.append(subtitleText)
-  subTitle.className = 'from-a-different-sass-file'
+  const subTitle = document.createElement("h2");
+  const subtitleText = document.createTextNode("A MUST HAVE TOOL");
+  subTitle.append(subtitleText);
+  subTitle.className = "from-a-different-sass-file";
 
   wrapper.className = "wrapper";
   header.className = "header";
@@ -22,13 +22,12 @@ function Component() {
   logo.className = "logo";
   image.src = img;
   logo.appendChild(image);
- 
+
   docFragment.appendChild(wrapper);
 
   wrapper.append(header);
-  wrapper.appendChild(subTitle)
+  wrapper.appendChild(subTitle);
   wrapper.appendChild(logo);
-
 
   return wrapper;
 }
