@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const _ = require("lodash");
 
 module.exports = {
@@ -53,6 +54,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin(                            
+    {template: 'src/html/index.html'}                         
+  )],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
