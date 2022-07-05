@@ -25,7 +25,14 @@ module.exports = {
 
       {
         test: /\.(woff|woff2)$/i,
-        loader: "url-loader",
+      
+        use:[{
+          loader: "url-loader",
+          options: {
+            outputPath: "fonts",
+            name: '[path][name].[ext]'
+          },
+        }]
       },
 
       {
@@ -35,6 +42,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               outputPath: "src/images",
+              name: '[path][name].[ext]'
             },
           },
         ],
@@ -60,7 +68,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "src/html/index.html" }),
+    new HtmlWebpackPlugin({ 
+      template: "src/html/index.html",
+      filename: './src/html/index.html'
+     }),
+
+
+
     new CleanWebpackPlugin(),
   ],
   resolve: {

@@ -1,3 +1,33 @@
+//TODO: go back to htmlWebpackPlug in a specify how to have the file added to dist in the src folder of dist:
+
+[see filename in the Options section](https://github.com/jantimon/html-webpack-plugin#options)
+
+      // in webpackconfig.js
+        plugins: [
+          new HtmlWebpackPlugin({
+            template: "src/html/index.html",
+            filename: './src/html/index.html'
+          }),
+          new CleanWebpackPlugin(),
+        ],
+
+//TODO: go back to file-loader section(specifcally for images) in a specify how to have the file added to dist in the src folder of dist:
+
+      // in webpackconfig.js
+
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "src/images",   //< ----- Path specified for dist
+              name: '[path][name].[ext]'  //< ----- name instead of hash specified for dist
+            },
+          },
+        ],
+      },
+
 # House Keeping in the Dist Folder | clean-webpack-plugin
 
 This plugin isn't nesseary but is recomended to keep the dist folder organized. Since we're contantlt using webpack to build bundles from our src directory, everytime we make changes or add resorces such as new files, images, fonts, etc. to src, a new resources will get generated in the dist folder. If we decided that no longer need any of those resorces and delete them from src, they will remain in the dist folder.
