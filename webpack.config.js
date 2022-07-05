@@ -15,6 +15,17 @@ module.exports = {
       { test: /\.txt?/, use: "raw-loader" },
 
       {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+
+      {
         test: /\.s[ac]ss$/i,
         use: [
           { loader: "style-loader" },
@@ -25,14 +36,7 @@ module.exports = {
 
       {
         test: /\.(woff|woff2)$/i,
-      
-        use:[{
-          loader: "url-loader",
-          options: {
-            outputPath: "fonts",
-            name: '[path][name].[ext]'
-          },
-        }]
+        loader: "url-loader",
       },
 
       {
@@ -42,7 +46,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               outputPath: "src/images",
-              name: '[path][name].[ext]'
+              name: '[path][name].[ext]',
             },
           },
         ],
@@ -68,13 +72,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ 
-      template: "src/html/index.html",
-      filename: './src/html/index.html'
-     }),
-
-
-
+    new HtmlWebpackPlugin({ template: "src/html/index.html" }),
     new CleanWebpackPlugin(),
   ],
   resolve: {

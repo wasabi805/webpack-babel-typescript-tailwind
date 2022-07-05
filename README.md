@@ -1,32 +1,75 @@
-//TODO: go back to htmlWebpackPlug in a specify how to have the file added to dist in the src folder of dist:
+# Babel And Jest
 
-[see filename in the Options section](https://github.com/jantimon/html-webpack-plugin#options)
+Babel Set up
+start with the docs for babel : https://jestjs.io/docs/getting-started#using-typescript for reference below:
 
-      // in webpackconfig.js
-        plugins: [
-          new HtmlWebpackPlugin({
-            template: "src/html/index.html",
-            filename: './src/html/index.html'
-          }),
-          new CleanWebpackPlugin(),
-        ],
+Core babel stuff
+npm install -D babel-loader @babel/core @babel/preset-env
 
-//TODO: go back to file-loader section(specifcally for images) in a specify how to have the file added to dist in the src folder of dist:
+Create a babel.config.json in the root of project
+[see](https://babeljs.io/docs/en/usage#overview)
 
-      // in webpackconfig.js
+    // write this of the newly created inside babel.config.json
+    {
+      "presets": ["@babel/core","@babel/preset-env"],
+      "pluggins": []
+    }
 
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
+[docs for presets](https://babeljs.io/docs/en/presets/)
+Preset are all the packages we're installing. The order matters(last to first): [see](https://babeljs.io/docs/en/presets/)
+
+Typescript configs, dev dependencies
+
+npm install --save-dev @babel/preset-typescript @babel/plugin-transform-typescript
+
+[see](https://babeljs.io/docs/en/babel-preset-typescript)
+then
+[see](https://babeljs.io/docs/en/babel-plugin-transform-typescript)
+
+for transform-typescript, when the docs above refer to
+
+    {
+     "plugins": ["@babel/plugin-transform-typescript"]
+    }
+
+I think this is reference to creating a babel.config.json or .babelrc.json [see](https://babeljs.io/docs/en/usage#overview)
+
+so add this to the pluggins array:
+
+    {
+      "presets": ["@babel/core","@babel/preset-env"],
+      "pluggins": ["@babel/plugin-transform-typescript"]
+    }
+
+webpack configs
+Now its' installed we'll have to configure webpack? : [see](https://webpack.js.org/loaders/babel-loader/#install)
+
+Now that those are installed, let's set configure webpack.config.js
+
+[from the docs](https://webpack.js.org/loaders/babel-loader/#usage)
+
+// inside webpack.config.js
+
+    module: {
+      rules: [
+        {
+          test: /\.m?js$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
             options: {
-              outputPath: "src/images",   //< ----- Path specified for dist
-              name: '[path][name].[ext]'  //< ----- name instead of hash specified for dist
-            },
-          },
-        ],
-      },
+              presets: ['@babel/preset-env']
+            }
+          }
+        }
+      ]
+    }
+
+build webpack
+
+npm run webpack
+
+NOW LETS TEST THAT babel is working by setting up JEST
 
 # House Keeping in the Dist Folder | clean-webpack-plugin
 
