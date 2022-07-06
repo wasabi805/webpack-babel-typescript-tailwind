@@ -79,7 +79,7 @@ We'll need jest-environment-jsdom to be able to test events that occur in the DO
 
 > jsdom and the jest-environment-jsdom package simulate a DOM environment as if you were in the browser. This means that every DOM API that we call can be observed in the same way it would be observed in a browser!
 
-Once you've installed the packages from abovem, add "jest" to package.json. We'll specify the transform value to [allow Jest to parse Typescript syntax](https://jestjs.io/docs/code-transformation). Also we need to define [testEnvivornment as jsdom](https://jestjs.io/docs/tutorial-jquery) so that jest can handle DOM events as mentioned earlier.
+Once you've installed the packages from above, add "jest" to package.json. We'll specify the transform value to [allow Jest to parse Typescript syntax](https://jestjs.io/docs/code-transformation). Also we need to define [testEnvivornment as jsdom](https://jestjs.io/docs/tutorial-jquery) so that jest can handle DOM events as mentioned earlier.
 
       // inside package.json:
       {
@@ -125,7 +125,7 @@ Once you've installed the packages from abovem, add "jest" to package.json. We'l
 
 - Inside the "stubs" directory, create a file named styles.js and inside styles.js, add the following code:
 
-      //  inside \__tests__/stubs/images.js
+      //  inside \__tests__/stubs/styles.js
 
       module.exports = {
 
