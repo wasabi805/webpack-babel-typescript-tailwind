@@ -33,3 +33,5 @@ function Component() {
 }
 
 document.body.append(Component());
+
+export default Component
