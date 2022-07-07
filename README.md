@@ -61,7 +61,7 @@ This is because we will need to configure a loader in webpack to understand how 
 
 Below are the steps needed to configure webpack to use ts-loader. These steps reference webpack's documentaion for [adding TypeScript Loaders](https://webpack.js.org/guides/typescript/) but the same thought process applies to other resources used in our html.
 
-# Install ts-loader
+## Install ts-loader
 
 - 1.) Install TypeScript Loaders.
 
@@ -320,7 +320,7 @@ Setting up exports and imports for png image useage in another file is now compl
 
 ![set up](./src/images/file-loader-import-error-resolved.png?raw=true)
 
-# Set up url-loader
+## Set up url-loader
 
       npm install --save-dev style-loader url-loader
 
