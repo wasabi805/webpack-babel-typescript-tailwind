@@ -1,44 +1,45 @@
 ## About this Repository...
 
-This repo contains a working copy of webpack configured with support for typescript via babel. The Webpack configuartion also includes loaders and support for jest, ts-loader, htmlWebpackPlugin, file-loader, url-loader, style-loader, css-loader, sass-loader, and clean-webpack-plugin. 
+This repo contains a working copy of webpack configured with support for typescript via babel. The Webpack configuartion also includes loaders and support for jest, ts-loader, htmlWebpackPlugin, file-loader, url-loader, style-loader, css-loader, sass-loader, and clean-webpack-plugin.
 
 This project was intended to document the process of configuring webpack and is intended as a guide to get up and running with using webpack on it's own or as a base to intergrate a front end framework such as React or tailwind.
-It can also be used as a template or broiler plate as well. 
+It can also be used as a template or broiler plate as well.
 
-I documented the configuration and installation at various steps, primarily as each loader or plugin was succesfully configured. This documentation isn't intended to be a definitive guide to configuring webpack rather, these were notes I took along the way on what worked for me and on some of the pitfalls that might prevent myself or another developer from getting webpack running. If there were examples in any of the offical documenation, I made sure to link them to the source. 
+I documented the configuration and installation at various steps, primarily as each loader or plugin was succesfully configured. This documentation isn't intended to be a definitive guide to configuring webpack rather, these were notes I took along the way on what worked for me and on some of the pitfalls that might prevent myself or another developer from getting webpack running. If there were examples in any of the offical documenation, I made sure to link them to the source.
 
-If you happen to clone this repo, wish you luck on whatever project your working on and please pass on the knowledge you obtain to your fellow developers. 
+If you happen to clone this repo, wish you luck on whatever project your working on and please pass on the knowledge you obtain to your fellow developers.
 
 # About the Documentaion
-The README.md file in the master branch contains the entire copy of the documentaion. Each branch contains the documentation respective to the topic. 
 
-# About Scripts
+The README.md file in the master branch contains the entire copy of the documentaion. Each branch contains the documentation respective to the topic.
+
+# Getting started
 
 Just a gentile reminder, if you decide to clone this repository run:
 
-    npm i 
+    npm i
 
 This will pull in all the node_module dependencies
-
 
 To run Typescript:
 
     npm run typescript
 
+NOTE: if npm run typescript fails, reinstall typescript.
+
+    npm i typescript
+
 To run prettier:
 
     npm run format
-
 
 To bundle with webpack:
 
     npm run webpack
 
-
 To run Jest:
 
     npm run test
-
 
 ## Setting Up Webpack, To Get Started ... | 01
 
@@ -114,6 +115,7 @@ Continuing below are the steps needed to configure webpack to use ts-loader. The
 - 4. Compile TypeScript and build webpack by running the scripts in package.json.
 
 # Set up Styles and CSS Loader | style-loader | css-loader | 03
+
 - 1.) Install style and css loaders
 
   npm install --save-dev style-loader css-loader
