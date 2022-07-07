@@ -1,5 +1,5 @@
 import { pack, someFunction } from "./js/constants";
-import "./style/input.scss";
+import "./style/input.css";
 import img from "./images/webpack-icon.png";
 
 function Component() {
