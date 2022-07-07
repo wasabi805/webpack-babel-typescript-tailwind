@@ -956,3 +956,7 @@ Add the webpack devServer configs to webpack.config.js
 Now run:
 
     npm run dev
+
+# Setting up Tailwind
+
+First remove sass, remove all sass files and sass references THEN remove the uninstall the loaders and remove wepack config
