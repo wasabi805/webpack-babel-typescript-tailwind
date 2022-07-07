@@ -63,15 +63,8 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [
-          { loader: "style-loader" },
-          {
-            loader: "css-loader",
-            options: {
-              url: true,
-            },
-          },
-        ],
+        include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },

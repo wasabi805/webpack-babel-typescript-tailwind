@@ -1,4 +1,6 @@
-@use "different-sass-file";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   background: black;
@@ -20,11 +22,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .from-a-different-sass-file {
-    font-family: "Adistro";
-    font-size: 3rem;
-  }
 }
 
 .header {
