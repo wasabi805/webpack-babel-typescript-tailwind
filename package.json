@@ -7,8 +7,7 @@
     "webpack": "npx webpack ",
     "typescript": "tsc",
     "format": "npx prettier --write .",
-    "test": "jest",
-    "generate-tsconfig": "tsc --init"
+    "test": "jest"
   },
   "jest": {
     "transform": {
