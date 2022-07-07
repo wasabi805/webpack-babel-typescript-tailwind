@@ -899,3 +899,60 @@ We can conclude from our Jest set up :
 - No additional tests were created with the inclusion of the stubs directory into the \_\_tests\_\_ directory
 
 ![set up](./src/images/jest-confirm-import-works.png?raw=true)
+
+# Webpack Dev Server
+
+Wepack dev server is a good alternative to vsCode live server plugin with minimal configuartion. This section covers adding webpack dev server.
+
+For more detils on configuring webpack dev server, [checkout the docs](https://webpack.js.org/configuration/dev-server/)
+
+Also referenced [Brad Traversy's github](https://gist.github.com/bradtraversy/1c93938c1fe4f10d1e5b0532ae22e16a)
+
+# Installation
+
+    npm i -D webpack webpack-cli webpack-dev-server
+
+## Add Webpack devServer Configs
+
+Add the webpack devServer configs to webpack.config.js
+
+      //  inside webpack.config.js
+
+      module.exports = {
+            mode: 'development',
+            entry: './src/index.js',
+            output: {
+              path: path.resolve(__dirname, 'dist'),
+              filename: 'main.bundle.js',
+            },
+
+          // ADD THE DEV SERVER PROPERTIES
+
+          devServer: {
+            static: {
+              directory: path.resolve(__dirname, 'dist'),
+            },
+            port: 3000,
+            open: true,
+            hot: true,
+            compress: true,
+            historyApiFallback: true,
+          },
+      }
+
+## Add Script for Webpack Dev Server
+
+      //inside package.json
+
+      {
+        "scripts": {
+              ...
+                "dev": "webpack server",
+              ...
+            },
+
+      }
+
+Now run:
+
+    npm run dev
