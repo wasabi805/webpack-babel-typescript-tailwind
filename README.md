@@ -1,3 +1,7 @@
+# Tailwind Broiler
+
+![Tailwind Logo](./src/images/tailwind-logo.png?raw=true)
+
 # Setting up Tailwind
 
 First remove sass, remove all sass files and sass references THEN remove the uninstall the loaders and remove wepack config
