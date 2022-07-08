@@ -1,6 +1,6 @@
 # Tailwind Broiler
 
-![Tailwind Logo](./src/images/tailwind-logo.png?raw=true)
+![Tailwind Logo](./src/images/tailwind-logo.jpg?raw=true)
 
 # Setting up Tailwind
 
