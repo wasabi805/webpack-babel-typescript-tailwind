@@ -1,8 +1,36 @@
-# Tailwind Broiler
+# Tailwind Template
 
 ![Tailwind Logo](./src/images/tailwind-logo.jpg?raw=true)
 
-# Setting up Tailwind
+Here's a working template for Tailwind. I primarily made it to have as a broiler plate for code excerises in other repos.
+
+it contains:
+
+- Tailwind
+
+- Webpack
+
+- Typescript
+
+- Babel
+
+- Jest
+
+- prettier
+
+- file loader
+
+- style loader
+
+- css loader
+
+- url loader
+
+- HtmlWebpackPlugin
+
+## Notes to myself
+
+Pay no attention to the notes below. They're simply references to setting up this repo from another repo i made:
 
 First remove sass, remove all sass files and sass references THEN remove the uninstall the loaders and remove wepack config
 
